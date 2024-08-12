@@ -18,38 +18,24 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue';
 import BackButton from '../components/BackButton.vue';
 
-export default {
-  name: 'Multiply',
-  components: { BackButton },
-  setup() {
-    const value1 = ref(0);
-    const value2 = ref(0);
-    const result = ref(null);
-    const error = ref(null);
+const value1 = ref(0);
+const value2 = ref(0);
+const result = ref(null);
+const error = ref(null);
 
-    function calculate() {
-      if (isNaN(value1.value) || isNaN(value2.value)) {
-        error.value = 'Veuillez entrer des nombres valides.';
-        result.value = null;
-      } else {
-        error.value = null;
-        result.value = value1.value * value2.value;
-      }
-    }
-
-    return {
-      value1,
-      value2,
-      result,
-      error,
-      calculate
-    };
+function calculate() {
+  if (isNaN(value1.value) || isNaN(value2.value)) {
+    error.value = 'Veuillez entrer des nombres valides.';
+    result.value = null;
+  } else {
+    error.value = null;
+    result.value = value1.value * value2.value;
   }
-};
+}
 </script>
 
 <style scoped>
